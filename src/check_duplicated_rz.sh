@@ -8,7 +8,7 @@ gdmls=( ${gdmls[*]/#/..\/gdml\/} )
 
 for gdml in ${gdmls[*]}
 do
-    DupedLines=$(grep "<rzpoint" ${gdml} | uniq -c | awk '{print $1, $2, $3, $4}' | grep -v "^1")
+    DupedLines=$(grep "<rzpoint" ${gdml} | sort | uniq -c | awk '{print $1, $2, $3, $4}' | grep -v "^1")
 
     if [[ -n ${DupedLines} ]]
     then
